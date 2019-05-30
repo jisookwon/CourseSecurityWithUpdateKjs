@@ -17,7 +17,7 @@ public class HomeController {
 
   @Autowired
   UserService userService;
-
+  //======= Security ===================
   @GetMapping("/register")
   public String showRegistrationPage(Model model){
     model.addAttribute("user", new User());
@@ -38,20 +38,21 @@ public class HomeController {
     return "redirect:/";
   }
 
-  @RequestMapping("/login")
-  public String login(){
-    return "login";
-  }
-
-  @RequestMapping("/")
-  public String listCourses(Model model){
-    model.addAttribute("courses", courseRepository.findAll());
-    if(userService.getUser() != null) {
-      model.addAttribute("user_id", userService.getUser().getId());
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
     }
-    return "list";
-  }
 
+    @RequestMapping("/")
+    public String listCourses(Model model) {
+        model.addAttribute("courses", courseRepository.findAll());
+        if (userService.getUser() != null) {
+            model.addAttribute("user_id", userService.getUser().getId());
+        }
+        return "list";
+    }
+
+    // ================ Course ===============
   @GetMapping("/add")
   public String courseForm(Model model) {
     model.addAttribute("course", new Course());

@@ -15,7 +15,10 @@
     Instructor: <span th:text="${course.instructor}"></span><br/>
     Description: <span th:text="${course.description}"></span><br/>
     Credits: <span th:text="${course.credit}"></span><br/>
-    <a th:href="@{/delete/{id}(id=${course.id})}">Delete this course</a>
+    <br/>
+    <span th:if="${user_id == course.user.id}">
+                    <a th:href="@{/delete/{id}(id=${course.id})}">Delete this course</a>
+    </span>
 </div>
 
 <div th:replace="base :: footer"></div>
