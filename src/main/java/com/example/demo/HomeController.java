@@ -52,7 +52,10 @@ public class HomeController {
         return "list";
     }
 
+
+
     // ================ Course ===============
+    //======= for Admin
   @GetMapping("/add")
   public String courseForm(Model model) {
     model.addAttribute("course", new Course());
@@ -79,7 +82,7 @@ public class HomeController {
   @RequestMapping("/update/{id}")
   public String updateCourse(@PathVariable("id") long id, Model model){
     model.addAttribute("course", courseRepository.findById(id).get());
-    return "courseform";
+        return "courseform";
   }
 
   @RequestMapping("/delete/{id}")
@@ -87,5 +90,27 @@ public class HomeController {
     courseRepository.deleteById(id);
     return "redirect:/";
   }
-
+//======================= User Course
+// ====================== for Authenticated user
+//  @RequestMapping("/deleteByUser/{id}")
+//  public String delCourse(Model model) {
+//    model.addAttribute("usercourse", userCourseRepository.findAll());
+//    if (userService.getUser() != null) {
+//      model.addAttribute("user_id", userService.getUser().getId());
+//    }
+//    return "list";
+//  }
+//
+//  @RequestMapping("/detail/{id}")
+//  public String showCar(@PathVariable("id") long id, Model model){
+//    model.addAttribute("usercourse", userCoursecarRepository.findById(id).get());
+//    return "show";
+//  }
+//
+//  @RequestMapping("/update/{id}")
+//  public String updateCar(@PathVariable("id") long id, Model model){
+//    model.addAttribute("categories", categoryRepository.findAll());
+//    model.addAttribute("car", carRepository.findById(id));
+//    return "carForm";
+//  }
 }

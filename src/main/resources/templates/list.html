@@ -20,9 +20,9 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1>this is title</h1>
+        <h2>Course</h2>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-borderless">
         <thead>
         <tr>
             <th>Title</th>
@@ -48,11 +48,43 @@
                     <span>
                         <a th:href="@{/detail/{id}(id=${course.id})}" class="btn btn-info" role="button">Details</a>
                     </span>
+
+                </div>
+                <div sec:authorize="isAnonymous()">
+                    <span>
+                        <a th:href="@{/detail/{id}(id=${course.id})}" class="btn btn-info" role="button">Details</a>
+                    </span>
                 </div>
             </td>
         </tr>
         </tbody>
     </table>
+
+    <!--<tbody>-->
+    <!--<tr th:each="message : ${messages}">-->
+        <!--<td th:text="${message.title}"></td>-->
+        <!--<td>-->
+            <!--<img th:src="${message.messagePic == null}?'':${message.messagePic}" style="height: auto; width: auto"  />-->
+        <!--</td>-->
+        <!--<td>-->
+            <!--<span th:text="${message.postedBy}"></span>-->
+        <!--</td>-->
+        <!--<td th:text="${message.postedDate}"></td>-->
+        <!--<td>-->
+            <!--&lt;!&ndash; Anyone can see Details &ndash;&gt;-->
+            <!--<a class="btn btn-warning" th:href="@{/detail/{id}(id=${message.id})}">Details</a>-->
+            <!--&lt;!&ndash; Only the user that made the post can update &ndash;&gt;-->
+            <!--<span th:if="${user_id == message.user.id}">-->
+                            <!--<a class="btn btn-warning" th:href="@{/update/{id}(id=${message.id})}">Update</a>-->
+                            <!--<a class="btn btn-danger" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>-->
+                        <!--</span>-->
+        <!--</td>-->
+    <!--</tr>-->
+    <!--</tbody>   -->
+    <!---->
+
+
+
 
 </div>
 
